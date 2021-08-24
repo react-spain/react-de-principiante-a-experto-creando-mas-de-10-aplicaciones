@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Formulario() {
+    // Crear state de citas
+    const[cita, actualizarCita] = useState({
+        mascota : '',
+        propietario: '',
+        fecha: '',
+        hora: '',
+        sintomas: ''
+    })
+
+
+    const actualizarState = () => {
+        console.log("escribiendo")
+    }
+
+
     return (
         <>
             <h2>Crear Cita</h2>
@@ -12,6 +27,7 @@ export default function Formulario() {
                     name="mascota"
                     className="u-full-width"
                     placeholder="Nombre Mascota"
+                    onChange={actualizarState}
                 />
 
                 <label>Nombre del dueño</label>
@@ -20,6 +36,7 @@ export default function Formulario() {
                     name="propietario"
                     className="u-full-width"
                     placeholder="Nombre Dueño Mascota"
+                    onChange={actualizarState}
                 />
 
                 <label>Fecha</label>
@@ -27,6 +44,7 @@ export default function Formulario() {
                     type="date"
                     name="fecha"
                     className="u-full-width"
+                    onChange={actualizarState}
                 />
 
                 <label>Hora</label>
@@ -34,16 +52,19 @@ export default function Formulario() {
                     type="time"
                     name="hora"
                     className="u-full-width"
+                    onChange={actualizarState}
                 />
 
                 <label>Sintomas</label>
                 <textarea className="u-full-width"
+                onChange={actualizarState}
                 name="sintomas"
                 >
                 
                 </textarea>
 
-                <button type="submit" className="u-full-width button-primary">Agregar Cita</button>
+                <button type="submit" 
+                className="u-full-width button-primary">Agregar Cita</button>
                         
             </form>
         </>
