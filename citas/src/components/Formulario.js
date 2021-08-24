@@ -11,9 +11,15 @@ export default function Formulario() {
     })
 
 
-    const actualizarState = () => {
-        console.log("escribiendo")
+    const actualizarState = e => {
+        actualizarCita({
+            ...cita,
+            [e.target.name] : e.target.value
+        })
     }
+
+
+    const {mascota, propietario, fecha, hora, sintomas} = cita;
 
 
     return (
@@ -28,6 +34,7 @@ export default function Formulario() {
                     className="u-full-width"
                     placeholder="Nombre Mascota"
                     onChange={actualizarState}
+                    value={mascota}
                 />
 
                 <label>Nombre del dueño</label>
@@ -37,6 +44,7 @@ export default function Formulario() {
                     className="u-full-width"
                     placeholder="Nombre Dueño Mascota"
                     onChange={actualizarState}
+                    value={propietario}
                 />
 
                 <label>Fecha</label>
@@ -45,6 +53,7 @@ export default function Formulario() {
                     name="fecha"
                     className="u-full-width"
                     onChange={actualizarState}
+                    value={fecha}
                 />
 
                 <label>Hora</label>
@@ -53,12 +62,14 @@ export default function Formulario() {
                     name="hora"
                     className="u-full-width"
                     onChange={actualizarState}
+                    value={hora}
                 />
 
                 <label>Sintomas</label>
                 <textarea className="u-full-width"
                 onChange={actualizarState}
                 name="sintomas"
+                value={sintomas}
                 >
                 
                 </textarea>
