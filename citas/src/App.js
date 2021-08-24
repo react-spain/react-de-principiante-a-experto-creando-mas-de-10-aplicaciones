@@ -3,12 +3,22 @@ import Formulario from "./components/Formulario";
 import Cita from "./components/Cita";
 
 function App() {
-  const[citas, setCitas] = useState([]);
+
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+  if (!citasIniciales) {
+    citasIniciales = [];
+  }
+
+  const[citas, setCitas] = useState(citasIniciales);
 
   // useEffect para cuando el state camboa
   useEffect(() => {
-    console.log('listo');
-  }, [citas])
+    if(citasIniciales) {
+      localStorage.setItem('citas', JSON.stringify(citas));
+    } else {
+      localStorage.setItem('citas', JSON.stringify([]));
+    }
+  }, [citas, citasIniciales])
 
   // Funcion que tome las cita actuales y que agregue las nuevas
   const crearCita = cita => {

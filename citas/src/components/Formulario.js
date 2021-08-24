@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import uuid from "uuid/v4";
+import PropType from 'prop-types';
 
 export default function Formulario({crearCita}) {
     // Crear state de citas
@@ -118,4 +119,8 @@ export default function Formulario({crearCita}) {
             </form>
         </>
     )
+}
+
+Formulario.propTypes = {
+    crearCita : PropType.func.isRequired
 }
