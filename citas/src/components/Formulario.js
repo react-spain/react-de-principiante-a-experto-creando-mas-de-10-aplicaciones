@@ -10,6 +10,8 @@ export default function Formulario() {
         sintomas: ''
     })
 
+    const [error, actualizarError] = useState(false);
+
 
     const actualizarState = e => {
         actualizarCita({
@@ -25,6 +27,16 @@ export default function Formulario() {
         e.preventDefault();
 
         // Validar
+        if( mascota.trim() === ''  || 
+            propietario.trim() === '' ||
+            fecha.trim() === '' ||
+            hora.trim() === '' ||
+            sintomas.trim() === ''
+            ) {
+               actualizarError(true);
+               console.log('Hay un error');
+               return;
+        }
 
 
         // Asignamos ID
@@ -39,6 +51,8 @@ export default function Formulario() {
     return (
         <>
             <h2>Crear Cita</h2>
+
+            {  error ? <p className="alerta-error">Todos los campos son obligatorio</p> :null }
 
             <form onSubmit={submitCita} >
                 <label>Nombre de la Mascota</label>
