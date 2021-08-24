@@ -21,12 +21,26 @@ export default function Formulario() {
 
     const {mascota, propietario, fecha, hora, sintomas} = cita;
 
+    const submitCita = e => {
+        e.preventDefault();
+
+        // Validar
+
+
+        // Asignamos ID
+
+        // Crear la cita 
+
+
+        // Reiniciar el form
+    }
+
 
     return (
         <>
             <h2>Crear Cita</h2>
 
-            <form>
+            <form onSubmit={submitCita} >
                 <label>Nombre de la Mascota</label>
                 <input
                     type="text"
