@@ -51,7 +51,7 @@ const Error = styled.div`
         text-align: center
 `;
 
-export default function Formulario({ setResumen }) {
+export default function Formulario({ setResumen, setCargando }) {
 
     const [datos, setDatos] = useState({
         marca : '',
@@ -75,12 +75,14 @@ export default function Formulario({ setResumen }) {
 
     const cotizarSeguro = (e) => {
         e.preventDefault();
+        setCargando(true);
 
         if(marca.trim() === '' || 
            year.trim === '' || 
            plan.trim() === '') 
                 {
                     setError(true);
+                    setCargando(false);
                     return;
                     }
 
@@ -105,11 +107,14 @@ export default function Formulario({ setResumen }) {
         const incrementoPlan = obtenerPlan(plan);
         resultado = parseFloat( incrementoPlan * resultado ).toFixed(2);
 
+        setTimeout(function(){ setCargando(false) }, 1000);
+
         // Total
         setResumen({
             cotizacion: resultado,
             datos
         })
+        
     }
 
     return (

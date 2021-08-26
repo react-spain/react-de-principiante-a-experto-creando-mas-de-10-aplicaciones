@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import Formulario from "./components/Formulario";
 import Resumen from "./components/Resumen";
 import { useState } from 'react';
+import Resultado from "./components/Resultado";
+import Spinner from "./components/Spinner";
 
 const Contenedor = styled.div`
   max-width: 600px;
@@ -24,8 +26,10 @@ function App() {
     }
   });
 
+  const [cargando, setCargando] = useState(false);
+
   // extraer datos
-  const { datos } = resumen;
+  const { datos, cotizacion } = resumen;
 
   return (
     <Contenedor>
@@ -34,8 +38,12 @@ function App() {
       <ContenedorFormulario>
                   <Formulario
                   setResumen = {setResumen}
+                  setCargando={setCargando}
                   />
-                  <Resumen datos={datos}/>
+                  { cargando ? <Spinner/> : null }
+                  { !cargando ? <Resumen datos={datos}/> : null }
+                  { !cargando ? <Resultado cotizacion={cotizacion}/> : null }
+                  
       </ContenedorFormulario>
     </Contenedor>
   );
