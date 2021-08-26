@@ -6,7 +6,7 @@ export function obtenerDiferenciaYear(year) {
 // Calcula el total a pagar segun la marca
 export function calcularMarca(marca){
     let incremento;
-    
+
     switch(marca){
         case 'europeo':
             incremento = 1.30;
@@ -26,4 +26,10 @@ export function calcularMarca(marca){
     }
 
     return incremento;
+}
+
+
+// Calcular el tipo de seguro
+export function obtenerPlan( plan ){
+    return ( plan === 'basico' ) ? 1.20 : 1.50
 }
