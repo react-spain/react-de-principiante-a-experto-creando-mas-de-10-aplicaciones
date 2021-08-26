@@ -27,7 +27,7 @@ function App() {
       setCreargasto(false)
 
     }
-  }, [gasto])
+  }, [gasto, gastos, creargasto, restante])
 
 
   return (

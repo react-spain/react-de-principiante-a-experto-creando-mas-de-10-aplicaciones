@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { revisarPresupuesto } from '../helpers';
 
 export default function ControlPresupuesto({presupuesto, restante}) {
     return (
@@ -7,7 +8,7 @@ export default function ControlPresupuesto({presupuesto, restante}) {
                Presupesto: $ {presupuesto}
             </div>
             
-            <div className="alert">
+            <div className={revisarPresupuesto(presupuesto,restante)}>
                 Restante: $ {restante}
             </div> 
         </>
