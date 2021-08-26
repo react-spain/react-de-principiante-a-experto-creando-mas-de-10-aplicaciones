@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Error() {
+export default function Error({mensaje}) {
     return (
-        <p className="alert alert-danger error">Hubo un error</p>
+        <p className="alert alert-danger error">{mensaje}</p>
     )
 }
