@@ -2,6 +2,7 @@ import Pregunta from "./components/Pregunta";
 import { useState } from "react";
 import Formulario from "./components/Formulario";
 import Listado from "./components/Listado";
+import ControlPresupuesto from "./components/ControlPresupuesto";
 
 function App() {
   const [presupuesto, setPresupuesto] = useState(0);
@@ -40,6 +41,10 @@ function App() {
                 <Listado
                   gastos={gastos}
                 />
+
+                <ControlPresupuesto 
+                    presupuesto = {presupuesto} 
+                    restante={restante}/>
               </div>
             </div>)}
         </div>
