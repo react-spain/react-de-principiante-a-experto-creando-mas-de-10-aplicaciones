@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Error from './Error';
 import shortid from 'shortid';
 
-export default function Formulario({agregarNuevoGasto}) {
+export default function Formulario({setGasto, setCreargasto}) {
     const [nombre, setNombre] = useState("");
     const [cantidad, setCantidad] = useState(0);
     const [error, setError] = useState(false);
@@ -29,7 +29,8 @@ export default function Formulario({agregarNuevoGasto}) {
 
 
         // Pasar al principal
-        agregarNuevoGasto(gasto)
+        setGasto(gasto)
+        setCreargasto(true)
 
         // reset el formulario
         setNombre('');
