@@ -6,7 +6,7 @@ export default function NuevoProyecto() {
     // Obtener el state del formulario
 
     const proyectosContext = useContext(proyectoContext)
-    const { formulario } = proyectosContext;
+    const { formulario, mostrarFormulario } = proyectosContext;
 
     const [proyecto, setProyecto] = useState({
         nombre: ''
@@ -30,6 +30,7 @@ export default function NuevoProyecto() {
             <button
             type="buttom"
             className="btn btn-block btn-primario"
+            onClick={ () => mostrarFormulario() }
             >Nuevo Proyecto</button>
 
             {
