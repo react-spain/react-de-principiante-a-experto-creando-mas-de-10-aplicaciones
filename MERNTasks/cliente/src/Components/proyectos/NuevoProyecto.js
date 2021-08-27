@@ -1,6 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
+import proyectoContext from '../../context/proyectos/proyectoContext';
 
 export default function NuevoProyecto() {
+
+    // Obtener el state del formulario
+
+    const proyectosContext = useContext(proyectoContext)
+    const { formulario } = proyectosContext;
 
     const [proyecto, setProyecto] = useState({
         nombre: ''
@@ -26,7 +32,10 @@ export default function NuevoProyecto() {
             className="btn btn-block btn-primario"
             >Nuevo Proyecto</button>
 
-            <form
+            {
+                formulario ? (
+
+                    <form
                 className="formulario-nuevo-proyecto"
                 onSubmit={onSubmitProyecto}
             >
@@ -47,6 +56,11 @@ export default function NuevoProyecto() {
                 />
 
             </form>
+                )
+
+                : null
+
+            }
         </>
 
     )
