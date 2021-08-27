@@ -2,6 +2,7 @@ import React from 'react'
 import Barra from '../loyout/Barra'
 import Sidebar from '../loyout/Sidebar'
 import FormTarea from '../tareas/FormTarea'
+import ListadoTareas from '../tareas/ListadoTareas'
 
 export default function Proyectos() {
     return (
@@ -15,10 +16,8 @@ export default function Proyectos() {
 
                     <FormTarea/>
 
-
-
                         <div className="contenedor-tareas">
-
+                            <ListadoTareas />
                         </div>
                 </main>
             </div>
