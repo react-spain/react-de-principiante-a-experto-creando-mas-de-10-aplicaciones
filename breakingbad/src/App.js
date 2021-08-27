@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-
+import React, {useState} from "react";
+import Frase from "./Components/Frase";
 
 const Contenedor = styled.div`
   display: flex;
@@ -26,12 +27,31 @@ const Boton = styled.button`
 
 
 function App() {
-  const consultarAPI = () => {
-    console.log("Consultando")
+  const [frase, setfrase] = useState("")
+ 
+
+  const consultarAPI = async () => {
+    try {
+        const pos = Math.floor(Math.random(15) * 10) +1 ;
+        const url = `https://jsonplaceholder.typicode.com/todos/${pos}`;
+        const response = await fetch(url);
+        if (response.status > 200) {
+          setfrase(`La posicion ${pos}: `+ response.status);
+        } else {
+          const result = await response.json();
+          setfrase(result.title);
+        }
+        
+    } catch (error) {
+        return null;
+    }
   }
 
   return (
     <Contenedor>
+
+    <Frase frase={frase}/>
+      
       <Boton
         onClick={ consultarAPI }
       >
