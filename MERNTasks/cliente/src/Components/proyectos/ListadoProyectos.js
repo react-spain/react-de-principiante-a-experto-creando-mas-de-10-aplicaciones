@@ -11,6 +11,7 @@ export default function ListadoProyectos() {
 
     useEffect(() => {
         obtenerProyectos();
+        // eslint-disable-next-line
     }, [])
 
     // revisar si proyecto tiene contenido

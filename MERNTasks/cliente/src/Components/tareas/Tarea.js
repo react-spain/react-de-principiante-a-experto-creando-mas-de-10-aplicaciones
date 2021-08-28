@@ -5,7 +5,7 @@ import tareaContext from '../../context/tareas/tareaContext';
 export default function Tarea({tarea}) {
     // Obtener las funciones del context
     const tareasContext = useContext(tareaContext);
-    const { eliminarTarea, obtenerTareas, cambiarEstadoTarea  } = tareasContext;
+    const { eliminarTarea, obtenerTareas, cambiarEstadoTarea, guardarTareaActual  } = tareasContext;
 
     // Extraer si un proyecto esta activo
     const proyectosContext = useContext(proyectoContext);
@@ -30,6 +30,11 @@ export default function Tarea({tarea}) {
             tarea.estado = true;
         }
         cambiarEstadoTarea(tarea)
+    }
+
+    const seleccionarTarea = (tarea) => {
+        // console.log("seleccionarTarea", tarea)
+        guardarTareaActual(tarea);
     }
 
     return (
@@ -61,6 +66,7 @@ export default function Tarea({tarea}) {
                 <button
                     type="button"
                     className="btn btn-primario"
+                    onClick={() => seleccionarTarea(tarea)}
                 >
                     Editar
                 </button>

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import proyectoContext from '../../context/proyectos/proyectoContext';
 import tareaContext from '../../context/tareas/tareaContext';
 
@@ -10,13 +10,35 @@ export default function FormTarea() {
 
     // Obtener las funciones del context
     const tareasContext = useContext(tareaContext);
-    const { errortarea ,agregarTarea, validarTarea, obtenerTareas  } = tareasContext;
+    const { tareaseleccionada, 
+        errortarea ,
+        agregarTarea, 
+        validarTarea, 
+        obtenerTareas,
+        actualzarTarea,
+        limpiarTarea
+    } = tareasContext;
+
+    
 
 
     // State del formulario
     const [tarea, setTarea] = useState({
         nombre: ''
     })
+
+
+    useEffect(() => {
+        // console.log('useEffect');
+        // console.log('tareaseleccionada:' , tareaseleccionada)
+        if(tareaseleccionada !== null) {
+            setTarea(tareaseleccionada)
+        } else {
+            setTarea({
+                nombre: ''
+            })
+        }
+    }, [tareaseleccionada])
 
     const { nombre } = tarea;
 
@@ -46,14 +68,25 @@ export default function FormTarea() {
             return;
         }
 
+
+        // Si es edicion o si es nueva tarea
+        if(tareaseleccionada===null) {
+            // tarea nueva
+            tarea.proyectoId = proyectoActual.id;
+            tarea.estado = false;
+            // console.log("[3] tarea:", tarea);
+            agregarTarea(tarea);
+        } else {
+            // actualizar tarea existente
+            actualzarTarea(tarea);
+            limpiarTarea();
+        }
+
+
         // console.log("[2] proyectoActual:", proyectoActual.id);
 
         // Agregar tarea al state de tarea
-        tarea.proyectoId = proyectoActual.id;
-        tarea.estado = false;
-
-        // console.log("[3] tarea:", tarea);
-        agregarTarea(tarea);
+       
 
 
         // Ontener las tareas
