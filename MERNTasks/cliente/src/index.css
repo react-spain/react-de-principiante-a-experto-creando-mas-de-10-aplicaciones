@@ -326,3 +326,8 @@ aside  {
   display: block;
   opacity: .7;
 }
+
+
+.padding-10 {
+  padding: 10px;
+}

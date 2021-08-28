@@ -22,7 +22,7 @@ export default function Proyecto({proyecto}) {
         <li>
            <button
                 type="button"
-                className="btn btn-blank"
+                className="btn btn-blank sombra padding-10"
                 onClick={ () => seleccionarProyecto(proyecto.id)}
            >{proyecto.nombre}</button>
         </li>
