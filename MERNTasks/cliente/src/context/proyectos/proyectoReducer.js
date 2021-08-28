@@ -3,7 +3,7 @@ import {
     OBTENER_PROYECTOS, 
     AGREGAR_PROYECTO,
     VALIDAR_FORMULARIO 
-} from '../../types';
+}   from '../../types';
 
 export default ( state, action ) => {
     switch(action.type) {
