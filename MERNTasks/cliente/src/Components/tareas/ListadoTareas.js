@@ -6,7 +6,7 @@ export default function ListadoTareas() {
 
     // Extraer Proyectos de State Inicial
     const proyectosContext = useContext(proyectoContext);
-    const { proyecto } = proyectosContext;
+    const { proyecto, eliminaProyecto } = proyectosContext;
 
     // Si no hay proyectos seleccionado
     if(!proyecto) return <h2>Selecciona un Proyecto</h2>
@@ -22,6 +22,10 @@ export default function ListadoTareas() {
         { nombre: 'Elegir Hosting', estado: false},
         { nombre: 'Elegir Modulo', estado: false}
     ]
+
+    const onClickElimimar = () => {
+        eliminaProyecto(proyectoActual.id)
+    }
 
     return (
         <>
@@ -42,6 +46,7 @@ export default function ListadoTareas() {
             <button
                 type="button"
                 className="btn btn-eliminar"
+                onClick={ onClickElimimar }
             >Eliminar Proyecto &times;
 
             </button>

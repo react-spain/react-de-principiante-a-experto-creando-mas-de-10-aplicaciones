@@ -13,7 +13,7 @@ export default function ListadoProyectos() {
     }, [])
 
     // revisar si proyecto tiene contenido
-    if(proyectos.length === 0) return null;
+    if(proyectos.length === 0) return <p>No hay proyectos</p>;
 
     
 
