@@ -15,13 +15,7 @@ export default function ListadoTareas() {
     const [proyectoActual] = proyecto
 
 
-    const tareasProyecto = [
-        { nombre: 'Elegir Plataforma', estado: true},
-        { nombre: 'Elegir Colores', estado: true},
-        { nombre: 'Elegir Plataforma de Pago', estado: true},
-        { nombre: 'Elegir Hosting', estado: false},
-        { nombre: 'Elegir Modulo', estado: false}
-    ]
+    const tareasProyecto = [];
 
     const onClickElimimar = () => {
         eliminaProyecto(proyectoActual.id)
