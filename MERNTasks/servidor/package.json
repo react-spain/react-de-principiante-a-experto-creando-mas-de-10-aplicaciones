@@ -4,17 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "node .",
-    "dev" : "nodemon ."
-   },
+    "start": "node .",
+    "dev": "nodemon ."
+  },
   "author": "Marlon Falcon",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.12"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-validator": "^6.12.1",
     "mongoose": "^6.0.2"
   }
 }
