@@ -4,7 +4,7 @@ const tareaController = require('../controllers/tareaController');
 const auth = require('../middleware/auth');
 const { check } = require('express-validator');
 
-// crear una tarea
+//? crear una tarea
 // api/tareas
 router.post('/', 
     auth,
@@ -16,3 +16,18 @@ router.post('/',
 )
 
 module.exports = router;
+
+
+//? Obtener las tareas por proyecto
+// /api/tareas
+router.get('/',
+    auth,
+    tareaController.obtenerTareas
+)
+
+
+//? Actualizar Tarea
+router.put('/:id', 
+    auth,
+    tareaController.actualizarTareas
+)
