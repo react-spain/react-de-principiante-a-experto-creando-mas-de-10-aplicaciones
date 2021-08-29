@@ -261,6 +261,7 @@ aside  {
   margin: 2rem auto 0 auto;
   background-color: rgb(170, 0, 0);
   color: var(--blanco);
+  margin-bottom: 5px;
 }
 
 
