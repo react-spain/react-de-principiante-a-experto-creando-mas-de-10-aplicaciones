@@ -31,3 +31,9 @@ router.put('/:id',
     auth,
     tareaController.actualizarTareas
 )
+
+//? Eliminar Tarea
+router.delete('/:id', 
+    auth,
+    tareaController.eliminarTarea
+)

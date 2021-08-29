@@ -90,3 +90,25 @@ exports.actualizarTareas = async (req, res) => {
         res.status(500).send('Hubo un error');
     }
 }
+
+
+exports.eliminarTarea = async (req, res) => {
+    try {
+        // revisar el ID
+        let tarea = await Tarea.findById(req.params.id);
+
+        // Si existe
+        if (!tarea) {
+            res.status(404).send('Tarea no Encontrada');
+        }
+
+        // Eliminar la tarea
+        await Tarea.findOneAndRemove({ _id: req.params.id })
+        res.json({msg: 'Tarea Eliminada'})
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+
+}
