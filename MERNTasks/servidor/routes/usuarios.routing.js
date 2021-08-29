@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
-const usuarioController = require('../controllers/usuarioController')
+const usuarioController = require('../controllers/usuarioController');
 
-// Crea un usuario
+
+// Iniciar sesión
 // api/usuarios
 router.post('/', 
     [
