@@ -10,14 +10,22 @@ exports.crearTarea = async (req, res) => {
     }
 
     try {
+        // Extraer el proyecto y comprobar que existe
+        const { proyecto } = req.body;
+        const existeProyecto = await Proyecto.findById(proyecto)
+        if(!existeProyecto) {
+            return res.status(404).json({ msg: 'Proyecto no Encontrado' })
+        }
 
+        // Revisar si el proyecto pertenece al usuario
+        if (existeProyecto.creador.toString() != req.usuario.id) {
+            res.status(401).send('No autorizado');
+        }
+
+        // Creamos la Tarea
         const tarea = new Tarea(req.body);
-
-        // Vamos a guardar el creador via JWT
-        Tarea.creador = req.usuario.id;
-
-        Tarea.save();
-        res.json(Tarea);
+        await tarea.save();
+        res.json({ tarea });
 
     } catch (error) {
         console.log(error);
